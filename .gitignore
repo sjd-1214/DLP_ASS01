@@ -1,5 +1,6 @@
 # Data
 data/
+Dataset/
 *.gz
 
 # Python & Jupyter
@@ -10,3 +11,6 @@ __pycache__/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Experiment outputs
+results.json
