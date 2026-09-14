@@ -1,23 +1,12 @@
 # Deep Learning for Perception - Assignment 1
-**FAST-NUCES (Fall 2026)**  
+**FAST-NUCES**  
 **Roll Number:** 23F-0620  
 **Repo Link:** https://github.com/sjd-1214/DLP_ASS01.git  
 **Random Seed:** 42  
 
-## Assignment Overview: Building, Breaking and Fixing a Neural Network
-
-The goal of this assignment is to understand the complete practical behavior of feedforward neural networks by going through three main stages:
-1. **Building:** Constructing an MLP from scratch in pure NumPy without autograd, deriving the backprop equations manually, and verifying the gradients against PyTorch. Then rebuilding it in PyTorch to study activations, loss functions, and optimizers.
-2. **Breaking:** Intentionally pushing the network into extreme overfitting by starving it of data (cutting down to 2,000 samples) and massively expanding its capacity (4 hidden layers of 512 units) until training accuracy exceeds 99% with a large generalization gap.
-3. **Fixing:** Applying regularization and tuning methods covered in class one by one (L2 weight decay, L1 penalty, Dropout, Batch Normalization, Early Stopping, Data Augmentation, and scaling training data) to see what actually works. Finally, tuning the model using 5-fold cross-validation on a hyperparameter grid and evaluating strictly once on the held-out test set.
-
-Everything is implemented and executed in `DL_ASS01_23F_0620.ipynb` using the provided Fashion-MNIST dataset from the `Dataset/` folder.
-
----
-
 ## Part-by-Part Notes & Findings
 
-* **Environment Setup:** Loaded `fashion-mnist_train.csv` (60,000 samples) and `fashion-mnist_test.csv` (10,000 samples) from `Dataset/`. Normalized pixel values to 0-1 and flattened images to 784-dimensional vectors. Kept an 80/20 train/validation split (48,000 train, 12,000 validation) and kept the 10,000 test set completely untouched until Part 7.
+* **Environment Setup:** Loaded `fashion-mnist_train.csv` (60,000 samples) and `fashion-mnist_test.csv` (10,000 samples). Normalized pixel values to 0-1 and flattened images to 784-dimensional vectors. Kept an 80/20 train/validation split (48,000 train, 12,000 validation) and kept the 10,000 test set completely untouched until Part 7.
 
 * **Part 1 (Backpropagation From Scratch):** Built a two-layer MLP (784 -> 64 -> 10) in pure NumPy with ReLU in the hidden layer and Softmax at the output. Derived manual gradients for categorical cross-entropy. Trained on a 5,000 sample subset for 20 epochs down to loss 0.3969. Copied initial weights into an identical PyTorch model to check gradients on the same batch—the max absolute difference was `2.88e-08`, confirming the math and NumPy backprop code are 100% correct.
 
